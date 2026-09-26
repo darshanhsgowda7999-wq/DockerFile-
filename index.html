@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A focused workspace for designing and observing LangGraph agent runs.">
+  <title>Orbit // Agent Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Orbit home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>ORBIT<span class="brand-slash">//</span>LAB</span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>LOCAL RUNTIME</span>
+        <span class="meta-divider"></span>
+        <span class="mono">v0.4.1</span>
+      </div>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">◐</button>
+    </header>
+
+    <main id="top">
+      <section class="hero reveal">
+        <div class="eyebrow"><span>01</span> CONTROL ROOM</div>
+        <h1>Make the next<br><em>good decision.</em></h1>
+        <p class="hero-copy">A quiet surface for sketching agent logic, watching state move, and keeping experiments close to the metal.</p>
+        <div class="hero-actions">
+          <button class="primary-button" id="runButton" type="button"><span class="play-icon">▶</span> Run workflow</button>
+          <a class="text-button" href="#workflow">Inspect graph <span>↘</span></a>
+        </div>
+      </section>
+
+      <section class="signal-strip reveal delay-1" aria-label="Runtime metrics">
+        <div class="signal-item"><span class="signal-label">ACTIVE GRAPH</span><strong>research_loop</strong></div>
+        <div class="signal-item"><span class="signal-label">LAST RUN</span><strong id="lastRun">42 sec ago</strong></div>
+        <div class="signal-item"><span class="signal-label">TOKENS / MIN</span><strong>1,284</strong></div>
+        <div class="signal-item signal-accent"><span class="signal-label">HEALTH</span><strong><span class="health-dot"></span>Nominal</strong></div>
+      </section>
+
+      <section class="workspace-grid" id="workflow">
+        <div class="workflow-panel panel reveal delay-2">
+          <div class="panel-heading">
+            <div><span class="section-number">02</span><h2>Workflow</h2></div>
+            <button class="small-button" id="resetButton" type="button">Reset view <span>↺</span></button>
+          </div>
+          <div class="graph-stage" id="graphStage">
+            <div class="graph-line line-one"></div>
+            <div class="graph-line line-two"></div>
+            <div class="graph-line line-three"></div>
+            <button class="node node-start active" data-node="intake" type="button"><span class="node-index">A</span><span>Intake</span><small>input</small></button>
+            <button class="node node-router" data-node="router" type="button"><span class="node-index">B</span><span>Router</span><small>decision</small></button>
+            <button class="node node-research" data-node="research" type="button"><span class="node-index">C</span><span>Research</span><small>tool call</small></button>
+            <button class="node node-compose" data-node="compose" type="button"><span class="node-index">D</span><span>Compose</span><small>output</small></button>
+            <div class="graph-pulse"></div>
+          </div>
+          <div class="graph-footer"><span><i class="legend-dot"></i> selected node</span><span class="mono">4 nodes / 3 edges</span></div>
+        </div>
+
+        <aside class="activity-panel panel reveal delay-3">
+          <div class="panel-heading"><div><span class="section-number">03</span><h2>Activity</h2></div><span class="live-label"><i></i> LIVE</span></div>
+          <div class="activity-list" id="activityList">
+            <div class="activity-item"><span class="activity-time">NOW</span><div><strong>Graph ready</strong><p>Waiting for an input event</p></div><span class="activity-check">✓</span></div>
+            <div class="activity-item"><span class="activity-time">09:41</span><div><strong>Router checkpoint</strong><p>Context window persisted</p></div><span class="activity-check">✓</span></div>
+            <div class="activity-item"><span class="activity-time">09:40</span><div><strong>Research branch</strong><p>3 sources returned</p></div><span class="activity-check">✓</span></div>
+          </div>
+          <button class="view-log" id="logButton" type="button">Open event log <span>→</span></button>
+        </aside>
+      </section>
+
+      <section class="notes-row reveal delay-3">
+        <div class="note-card"><span class="note-index">A1</span><div><h3>State stays visible.</h3><p>Every handoff is a checkpoint. Every checkpoint is something you can inspect.</p></div></div>
+        <div class="note-card warm"><span class="note-index">A2</span><div><h3>Small loops, sharp edges.</h3><p>Prototype the decision path before you scale the model around it.</p></div></div>
+      </section>
+    </main>
+
+    <footer><span>BUILT FOR CURIOUS SYSTEMS</span><span class="mono">LANGGRAPH / PYTHON / LOCAL</span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
